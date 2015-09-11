@@ -7,7 +7,7 @@ set PE_INSTALL_DIR=C:\tools\Puppet
 set PE_SERVER=usladpup03.chi.warranty.local
 
 
-rem ** Shouldn't need to edit anything below this line **
+rem ** Should not need to edit anything below this line **
 set PE_FILE_NAME=puppet-agent-x64-latest.msi
 set PE_DOWNLOAD_URL=https://downloads.puppetlabs.com/windows/%PE_FILE_NAME%
 set PE_INSTALLER=%SOFTDIR%\%PE_FILE_NAME%
