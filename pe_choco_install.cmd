@@ -24,5 +24,5 @@ mkdir %SOFTDIR%
 msiexec /qn /norestart /i %PE_INSTALLER% /l*v %SOFTDIR%\pe_agent_install.log INSTALLDIR=%PE_INSTALL_DIR% PUPPET_MASTER_SERVER=%PE_SERVER%
 
 rem Chocolatey installation - does not allow custom dir installation
-@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString(\"https://chocolatey.org/install.ps1\"))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
