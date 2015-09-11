@@ -11,8 +11,6 @@ rem ** Shouldn't need to edit anything below this line **
 set PE_FILE_NAME=puppet-agent-x64-latest.msi
 set PE_DOWNLOAD_URL=https://downloads.puppetlabs.com/windows/%PE_FILE_NAME%
 set PE_INSTALLER=%SOFTDIR%\%PE_FILE_NAME%
-rem Choco download url must be quoted for PS to treat it as a string
-rem set CHOCO_DOWNLOAD_URL='https://chocolatey.org/install.ps1'
 
 
 rem Set execution policy to RemoteSigned for later PS1 scripts
