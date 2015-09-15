@@ -12,6 +12,8 @@ $PE_FILE_NAME="puppet-agent-x64-latest.msi"
 $PE_DOWNLOAD_URL="https://downloads.puppetlabs.com/windows/${PE_FILE_NAME}"
 $PE_INSTALLER=${SOFTDIR}+"\"+${PE_FILE_NAME}
 
+# ***** TEMPORARY ***** Add Puppet server to etc\hosts
+Add-Content C:\Windows\system32\drivers\etc\hosts "`n10.20.64.49`t $PE_SERVER"
 
 # Set execution policy to RemoteSigned for later PS1 scripts
 Set-ExecutionPolicy RemoteSigned -Force
@@ -23,3 +25,4 @@ iex "msiexec /qn /norestart /i ${PE_INSTALLER} /l*v $SOFTDIR\pe_agent_install.lo
 
 # Chocolatey installation - does not allow custom dir installation
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+
