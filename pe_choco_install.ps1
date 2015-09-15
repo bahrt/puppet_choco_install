@@ -14,6 +14,7 @@ $PE_INSTALLER=${SOFTDIR}+"\"+${PE_FILE_NAME}
 
 # ***** TEMPORARY ***** Add Puppet server to etc\hosts
 Add-Content C:\Windows\system32\drivers\etc\hosts "`n10.20.64.49`t $PE_SERVER"
+# ***** TEMPORARY *****
 
 # Set execution policy to RemoteSigned for later PS1 scripts
 Set-ExecutionPolicy RemoteSigned -Force
