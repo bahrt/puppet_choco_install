@@ -1,5 +1,5 @@
-# Run this: 
-# @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/bahrt/puppet_choco_install/master/pe_choco_install.ps1'))"
+# EC2 user-data:
+# <powershell>Start-Process powershell -Verb RunAs "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/bahrt/puppet_choco_install/master/pe_choco_install.ps1'))"</powershell>
 
 # Environment variables
 $SOFTDIR="C:\software"
