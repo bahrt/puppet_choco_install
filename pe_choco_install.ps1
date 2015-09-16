@@ -19,11 +19,11 @@ Add-Content C:\Windows\system32\drivers\etc\hosts "`n10.20.64.49`t $PE_SERVER"
 # Set execution policy to RemoteSigned for later PS1 scripts
 Set-ExecutionPolicy RemoteSigned -Force
 
+# Chocolatey installation - does not allow custom dir installation
+iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+
 # Download and install Puppet Agent
 New-Item -Force -ItemType dir $SOFTDIR
 Invoke-WebRequest $PE_DOWNLOAD_URL -OutFile $PE_INSTALLER
 iex "msiexec /qn /norestart /i ${PE_INSTALLER} /l*v $SOFTDIR\pe_agent_install.log INSTALLDIR=$PE_INSTALL_DIR PUPPET_MASTER_SERVER=$PE_SERVER"
-
-# Chocolatey installation - does not allow custom dir installation
-iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
