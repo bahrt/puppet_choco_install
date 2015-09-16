@@ -1,5 +1,6 @@
 # EC2 user-data:
-# <powershell>Start-Process powershell -Verb RunAs "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/bahrt/puppet_choco_install/master/pe_choco_install.ps1'))"</powershell>
+# <powershell>Start-Process powershell -Verb RunAs "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/bahrt/puppet_choco_install/master/pe_choco_install.ps1'))"
+# iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))</powershell>
 
 # Environment variables
 $SOFTDIR="C:\software"
@@ -20,7 +21,7 @@ Add-Content C:\Windows\system32\drivers\etc\hosts "`n10.20.64.49`t $PE_SERVER"
 Set-ExecutionPolicy RemoteSigned -Force
 
 # Chocolatey installation - does not allow custom dir installation
-iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
+## moved to user-data ## iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Download and install Puppet Agent
 New-Item -Force -ItemType dir $SOFTDIR
