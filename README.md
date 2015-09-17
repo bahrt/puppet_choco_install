@@ -13,29 +13,30 @@
 
 ## Overview
 
-Powershell script to bootstrap a custom EC2 Windows instance
+Powershell user-data code to bootstrap a custom EC2 Windows instance
 
 
 ## Module Description
 
-The script installs Puppet Agent for Windows and Chocolatey 64 bits and registers it against a Puppet Server. 
+The script installs Chocolatey, which in turn installs Puppet Agent with the provided server address. 
 
 ## Setup
 
 ### What pe_choco_install affects
 
-pe_choco_install will install puppet-agent-x64-latest.msi from Puppet Windows downloads and then run the standard Chocolatey install PS command, which downloads the latest version and installs it.
+pe_choco_install will install Chocolatey with from its standard install command. Then will install Puppet Agent using `choco install` with a custom Puppet Server adress as parameter.
 
-### Setup Requirements
+# Setup Requirements
 
-Both packages would support 32 bits systems, but at the time of writing, Puppet will download the 64 bits distribution without checking, so 32 bits is not supported.
+You need a valid EC2 subscription, and obviously a Puppet Server to which the agent will report.
+Even though I tested only 64 bits systems, it should work in 32 bits too.
 
 ## Usage
 
-You'll need to edit the ps1 script and adjust the env variables to your needs prior to first run.
+You'll need to edit the code and adjust the Puppet Server name.
 Then inject the template from your Puppet AWS ec2_instance manifest: 
   `user_data => template('dir_name/pe_choco_template.ps1.erb'),`
-and launch the instance. The user-data code will run during first boot, download Puppet and Choco, install them, and then register the node against Puppet Server.
+and launch the instance. The user-data code will run during first boot, download Choco and then install Puppet Agent, which will register the node against Puppet Server during first run.
 
 ## Limitations
 
@@ -44,7 +45,4 @@ Tested on Windows 2008 R2 and 2012, both 64 bits.
 ## Development
 
 Currently under heavy development.
-
-
-
 
